@@ -9,7 +9,7 @@ import socket
 s =  None;
 
 serverName = "127.0.0.1"
-port = "1200"
+port = 12000
 KeepConnect = 1
 
 class MyDialog(simpledialog.Dialog):
@@ -36,6 +36,8 @@ class MyDialog(simpledialog.Dialog):
         c = self.KeepConnect.get()
         if(c == 1):
             connect()
+    def cancle(self):
+            connect()        
 
 def showEditText(help):
     vhelp_text.set(help)
@@ -192,9 +194,12 @@ def send():
         message = funksioni + var1.get() + " " + textEntry.get()
     else:
         message = funksioni + textEntry.get()
-    s.send(str.encode(message))
-
-    r = s.recv(2048).decode()
+    if(len(message) < 128):
+        s.send(str.encode(message))
+        r = s.recv(2048).decode()
+    else:
+        r = "Kerkesa nuk mund te jete mbi 128 bytes"
+    
     if(c == 0):
         s.close()
 

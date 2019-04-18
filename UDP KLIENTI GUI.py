@@ -9,7 +9,7 @@ import socket
 s =  None;
 
 serverName = "127.0.0.1"
-port = "1200"
+port = 12000
 
 
 class MyDialog(simpledialog.Dialog):

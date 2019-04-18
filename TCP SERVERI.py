@@ -7,7 +7,7 @@ from urllib.request import Request, urlopen
 import re
 
 serverName = '127.0.0.1'
-serverPort = 1200
+serverPort = 12000
 serverSocket = socket(AF_INET, SOCK_STREAM)
 serverSocket.bind((serverName, serverPort))
 
@@ -113,6 +113,9 @@ def TestoFloat(n):
         return False 
 
 def VerifikoKerkesen(kerkesa):
+    if(len(kerkesa) > 128):
+        return False
+
     KonvertimiOptions = ["KilowattToHorsepower","HorsepowerToKilowatt",
                           "DegreesToRadians","RadiansToDegrees","GallonsToLiters",
                           "LitersToGallons"]
